@@ -190,6 +190,9 @@ button:hover {
     border-bottom: 2px solid var(--border-color);
     background-color: #F8F9FA;
     margin-bottom: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .scale-header .scale-question {
@@ -341,6 +344,9 @@ button:hover {
         margin-bottom: 0;
         background-color: #F8F9FA;
         border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 100;
     }
 
     .scale-header .scale-options {
