@@ -270,3 +270,112 @@ button:hover {
     color: var(--primary-color);
     margin-bottom: 16px;
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 0 16px;
+    }
+
+    .form-section, .question-section {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .scale-container {
+        padding: 12px;
+    }
+
+    .scale-item {
+        flex-direction: column;
+        padding: 8px 0;
+    }
+
+    .scale-question {
+        flex: none;
+        padding-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .scale-options {
+        flex: none;
+        width: 100%;
+        justify-content: space-between;
+        background-color: #F8F9FA;
+        padding: 8px;
+        border-radius: 8px;
+        margin-top: 8px;
+    }
+
+    .scale-option-label {
+        width: auto;
+        min-width: 60px;
+        background-color: white;
+        padding: 8px 4px;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        margin: 0 2px;
+    }
+
+    .scale-option-label input[type="radio"] {
+        margin: 4px 0;
+        width: 24px;
+        height: 24px;
+    }
+
+    .scale-option-label span {
+        font-size: 12px;
+        color: var(--text-color);
+        font-weight: 500;
+        margin-top: 4px;
+    }
+
+    .scale-question {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--text-color);
+    }
+
+    .btn-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    button {
+        width: 100%;
+        float: none;
+    }
+
+    .form-progress {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .radio-group, .checkbox-group {
+        margin-bottom: 12px;
+    }
+
+    .radio-option, .checkbox-option {
+        margin-bottom: 6px;
+    }
+
+    input[type="text"], textarea, select {
+        font-size: 16px; /* iOS için daha büyük font */
+        padding: 12px;
+    }
+}
+
+/* Tablet için ek düzenlemeler */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .scale-option-label {
+        min-width: 70px;
+    }
+}
