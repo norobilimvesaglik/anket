@@ -924,15 +924,21 @@
             <div class="question">Daha önce liderlik eğitimi aldınız mı? <span class="required">*</span></div>
             <div class="radio-group">
                 <div class="radio-option">
-                    <input type="radio" id="leadership-edu-yes" name="leadership-edu" value="Evet" required>
+                    <input type="radio" id="leadership-edu-yes" name="leadership-edu" value="Evet" required onchange="toggleConditionalInput('leadership-edu')">
                     <label for="leadership-edu-yes">Evet</label>
                 </div>
                 <div class="radio-option">
-                    <input type="radio" id="leadership-edu-no" name="leadership-edu" value="Hayır">
+                    <input type="radio" id="leadership-edu-no" name="leadership-edu" value="Hayır" onchange="toggleConditionalInput('leadership-edu')">
                     <label for="leadership-edu-no">Hayır</label>
                 </div>
             </div>
             <div class="error-message" id="leadership-edu-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+            <div class="conditional-input" id="leadership-edu-conditional">
+                <div class="text-input">
+                    <textarea id="leadership-edu-details" name="leadership-edu-details" placeholder="Lütfen Açıklayınız" rows="3"></textarea>
+                </div>
+                <div class="error-message" id="leadership-edu-details-error">Bu alanı doldurmanız gerekmektedir.</div>
+            </div>
         </div>
 
         <!-- Kişisel Gelişim Eğitimi -->
@@ -1184,6 +1190,13 @@
         <div class="error-message" id="love-job-error">Bu soruyu cevaplamanız gerekmektedir.</div></div>
         
         <div class="form-card">
+        <div class="question">Arzu ettiğiniz 2 uzmanlık alanı ne olabilir ve neden? <span class="required">*</span></div>
+        <div class="text-input">
+            <textarea id="specialization" name="specialization" placeholder="Lütfen açıklayınız" rows="5" required></textarea>
+        </div>
+        <div class="error-message" id="specialization-error">Bu alanı doldurmanız gerekmektedir.</div></div>
+        
+        <div class="form-card">
         <div class="question">Geçirdiğiniz 6 yıllık eğitim ve önünüzde bekleyen bir meslek hayatı var. Genel olarak bunlara dair ifade etmek istediğiniz hususlar var mı?</div>
         <div class="text-input">
             <textarea id="final-thoughts" name="final-thoughts" rows="5"></textarea>
@@ -1205,6 +1218,18 @@
     </div>
 </div>
 </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <h3>Sayfa Değişikliği Uyarısı</h3>
+        <p>Ölçekli sorulardan itibaren sonraki sayfalara geçtiğinizde önceki sayfalara geri dönüş imkanınız olmayacaktır. Cevaplarınızdan emin iseniz sonraki sayfaya geçebilirsiniz.</p>
+        <div class="modal-buttons">
+            <button id="modalEditBtn">Düzenleme Yapacağım</button>
+            <button id="modalProceedBtn">Sonraki Sayfaya Geç</button>
+        </div>
+    </div>
 </div>
 
 <script src="script.js"></script>

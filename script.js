@@ -25,14 +25,19 @@ function toggleConditionalInput(fieldName) {
 }
 
 // Function to navigate between pages
-function goToPage(pageId) {
+function goToPage(pageId, fromModal = false) {
     const currentPage = document.querySelector('.form-page.active');
     const nextPage = document.getElementById(pageId);
     
     if (currentPage && nextPage) {
-        currentPage.classList.remove('active');
-        nextPage.classList.add('active');
-        window.scrollTo(0, 0);
+        // Show modal for pages after page2, but only if not coming from modal and not on the last page
+        if (parseInt(currentPage.id.replace('page', '')) >= 2 && !fromModal && nextPage.id !== 'thank-you-page') {
+            showModal(pageId);
+        } else {
+            currentPage.classList.remove('active');
+            nextPage.classList.add('active');
+            window.scrollTo(0, 0);
+        }
     }
 }
 
@@ -354,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(iframe);
         
         this.target = 'submit-iframe';
-        this.action = "https://script.google.com/macros/s/AKfycbxj3Z88aJpJSUNkMiMNpWRF68cwqqvi_r2ralHTOc0JpVOOQlB7D_TEDmJHM4D4PEKyEA/exec";
+        this.action = "https://script.google.com/macros/s/AKfycbxz9qZB3XQG2EcEIxSCAIMOFxuQ0MH7-135fHBtufbFmEZHUAfWkjLEk-932qQp84UAoQ/exec";
         this.method = 'post';
         
         this.submit();
@@ -463,4 +468,33 @@ function setupQuestionNavigation() {
 
     updateNavigationButtons();
 }
+
+// Modal functionality
+const modal = document.getElementById('confirmationModal');
+const modalEditBtn = document.getElementById('modalEditBtn');
+const modalProceedBtn = document.getElementById('modalProceedBtn');
+let nextPageId = '';
+
+function showModal(pageId) {
+    modal.style.display = 'block';
+    nextPageId = pageId;
+}
+
+function hideModal() {
+    modal.style.display = 'none';
+}
+
+modalEditBtn.addEventListener('click', hideModal);
+
+modalProceedBtn.addEventListener('click', () => {
+    hideModal();
+    goToPage(nextPageId, true); // Pass true to indicate this is coming from modal
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        hideModal();
+    }
+});
 
