@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hekim Adayı Anketi</title>
+    <title>NSK - Anket</title>
     <style>
         :root {
             --primary-color: #673AB7;
@@ -133,16 +133,13 @@
             justify-content: space-between;
             margin-bottom: 20px;
         }
-        
-        .progress-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #E0E0E0;
-        }
-        
-        .progress-dot.active {
-            background-color: var(--primary-color);
+
+        .form-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .form-page {
@@ -155,7 +152,7 @@
         
         .error-message {
             color: var(--error-color);
-            font-size: 12px;
+            font-size: 16px;
             margin-top: 4px;
             display: none;
         }
@@ -164,15 +161,6 @@
             display: flex;
             justify-content: space-between;
             margin-top: 24px;
-        }
-        
-        .back-btn {
-            background-color: #F1F3F4;
-            color: var(--text-color);
-        }
-        
-        .back-btn:hover {
-            background-color: #E8EAED;
         }
         
         .scale-container {
@@ -184,7 +172,6 @@
         .scale-item {
             display: flex;
             padding: 8px 0;
-            border-bottom: 1px solid var(--border-color);
         }
         
         .scale-question {
@@ -221,10 +208,11 @@
             <!-- Page 1: Introduction -->
             <div class="form-page active" id="page1">
                 <div class="form-section">
-                    <h1>Hekim Adayı Anketi</h1>
+                    <h1>Anket</h1>
                     <div class="description">
                         Değerli hekim adayı; bu katıldığınız çalışma bilimsel bir araştırma olup amacı mezuniyet aşamasına gelmiş öğrencilerimizde kimi açılardan öznel görüşlerini ve tecrübelerini betimleyerek programımızın temelinde değerlendirme yapmak üzere veri elde etmektir. Bu çalışmaya katılırsanız sizden yaklaşık 30 dk kadar zaman ayırmanız istenecektir. Bu çalışmada sizden sadece sorulara en uygun cevabı işaretlemeniz beklenmektedir. Çalışmaya katılım tamamen gönüllülük esasına dayanmaktadır. Sizden kimlik belirleyici hiçbir bilgi istenmeyecektir. Cevaplarınız tamamen gizli tutulacak ve sadece araştırmacılar tarafından değerlendirilecek ve elde edilecek bilgiler bilimsel yayımlarda kullanılacaktır. Çalışma kişisel rahatsızlık verecek unsurlar içermemektedir. Ancak, çalışma sırasında sorulardan ya da herhangi bir nedenden ötürü kendinizi rahatsız hissederseniz katılmayabilirsiniz. Çalışma sonunda bu çalışmayla ilgili sorularınız cevaplanacaktır. Bu çalışmaya katıldığınız için şimdiden teşekkür ederiz. Çalışma hakkında daha fazla bilgi almak ve sorularınız için öğretim elemanı ile iletişim kurabilirsiniz.
                     </div>
+                    <div class="form-card">
                     <div class="question">Katılım Onayı <span class="required">*</span></div>
                     <div class="radio-group">
                         <div class="radio-option">
@@ -242,26 +230,21 @@
                         <button type="button" id="page1Next">İleri</button>
                     </div>
                 </div>
-            </div>
+            </div></div>
 
             <!-- Page 2: Personal Information -->
-            <div class="form-page" id="page2">
+            <div class="form-page" id="page2"> 
                 <div class="form-section">
                     <h1>Kişisel Bilgiler</h1>
-                    <div class="form-progress">
-                        <div class="progress-dot active"></div>
-                        <div class="progress-dot active"></div>
-                        <div class="progress-dot"></div>
-                        <div class="progress-dot"></div>
-                        <div class="progress-dot"></div>
-                    </div>
-                    
-                    <div class="question">RUMUZ İSİM (hatırlayacağınız bir rumuz bulmaya özen gösterin lütfen) <span class="required">*</span></div>
+
+                    <div class="form-card">
+                    <div class="question">Rumuz İsim (Lütfen hatırlayacağınız bir rumuz bulmaya özen gösterin.) <span class="required">*</span></div>
                     <div class="text-input">
                         <input type="text" id="nickname" name="nickname" required>
                     </div>
-                    <div class="error-message" id="nickname-error">Bu alanı doldurmanız gerekmektedir.</div>
+                    <div class="error-message" id="nickname-error">Bu alanı doldurmanız gerekmektedir.</div></div>
                     
+                    <div class="form-card">
                     <div class="question">Yaşınız <span class="required">*</span></div>
                     <div class="radio-group">
                         <div class="radio-option">
@@ -281,21 +264,23 @@
                             <label for="age-25-above">25 ve üzeri</label>
                         </div>
                     </div>
-                    <div class="error-message" id="age-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+                    <div class="error-message" id="age-error">Bu soruyu cevaplamanız gerekmektedir.</div></div>
                     
+                    <div class="form-card">
                     <div class="question">Cinsiyet <span class="required">*</span></div>
                     <div class="radio-group">
                         <div class="radio-option">
                             <input type="radio" id="gender-f" name="gender" value="K" required>
-                            <label for="gender-f">K</label>
+                            <label for="gender-f">Kadın</label>
                         </div>
                         <div class="radio-option">
                             <input type="radio" id="gender-m" name="gender" value="E">
-                            <label for="gender-m">E</label>
+                            <label for="gender-m">Erkek</label>
                         </div>
                     </div>
-                    <div class="error-message" id="gender-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+                    <div class="error-message" id="gender-error">Bu soruyu cevaplamanız gerekmektedir.</div></div>
                     
+                    <div class="form-card">
                     <div class="question">Mezuniyet başarınızı not üzerinden nasıl değerlendirirsiniz? <span class="required">*</span></div>
                     <div class="radio-group">
                         <div class="radio-option">
@@ -304,11 +289,12 @@
                         </div>
                         <div class="radio-option">
                             <input type="radio" id="success-good" name="success" value="İyi/çok iyi">
-                            <label for="success-good">İyi/çok iyi</label>
+                            <label for="success-good">İyi/Çok iyi</label>
                         </div>
                     </div>
-                    <div class="error-message" id="success-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+                    <div class="error-message" id="success-error">Bu soruyu cevaplamanız gerekmektedir.</div></div>
                     
+                    <div class="form-card">
                     <div class="question">Sınıf veya staj tekrarı yaptınız mı? <span class="required">*</span></div>
                     <div class="radio-group">
                         <div class="radio-option">
@@ -320,9 +306,10 @@
                             <label for="repeat-yes">Evet</label>
                         </div>
                     </div>
-                    <div class="error-message" id="repeat-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+                    <div class="error-message" id="repeat-error">Bu soruyu cevaplamanız gerekmektedir.</div></div>
                     
                     <div class="conditional-input" id="repeat-conditional">
+                        <div class="form-card">
                         <div class="question">Yıl tekrarı:</div>
                         <div class="radio-group">
                             <div class="radio-option">
@@ -337,8 +324,9 @@
                                 <input type="radio" id="year-repeat-3" name="year-repeat" value="3 ve fazlası" data-checked="false">
                                 <label for="year-repeat-3">3 ve fazlası</label>
                             </div>
-                        </div>
+                        </div></div>
                         
+                        <div class="form-card">
                         <div class="question">Staj tekrarı:</div>
                         <div class="radio-group">
                             <div class="radio-option">
@@ -353,11 +341,10 @@
                                 <input type="radio" id="internship-repeat-3" name="internship-repeat" value="3 ve fazlası" data-checked="false">
                                 <label for="internship-repeat-3">3 ve fazlası</label>
                             </div>
-                        </div>
+                        </div></div>
                     </div>
                     
                     <div class="btn-container">
-                        <button type="button" class="back-btn" onclick="goToPage('page1')">Geri</button>
                         <button type="button" id="page2Next">İleri</button>
                     </div>
                 </div>
@@ -367,13 +354,6 @@
             <div class="form-page" id="page3">
                 <div class="form-section">
                     <h1>Klinik Liderlik Ölçeği</h1>
-                    <div class="form-progress">
-                        <div class="progress-dot active"></div>
-                        <div class="progress-dot active"></div>
-                        <div class="progress-dot active"></div>
-                        <div class="progress-dot"></div>
-                        <div class="progress-dot"></div>
-                    </div>
                     
                     <div class="description">
                         Aşağıdaki ifadelere ne sıklıkla katıldığınızı belirtiniz.
@@ -383,225 +363,668 @@
                         <div class="scale-item scale-header">
                             <div class="scale-question"></div>
                             <div class="scale-options">
-                                <div>Neredeyse Asla (1)</div>
-                                <div>Bazen (2)</div>
-                                <div>Neredeyse Her Zaman (3)</div>
+                                <div>Neredeyse Asla</div>
+                                <div>Bazen</div>
+                                <div>Neredeyse Her Zaman</div>
                             </div>
                         </div>
-                        
-                        <!-- Placeholder for 40 leadership scale questions -->
-                        <!-- You would typically populate these from a database or data source -->
-                        <!-- For demonstration purposes I'll add 5 example items -->
-                        
-                        <div class="scale-item">
-                            <div class="scale-question">1. Bir ekibin parçası olarak çalışırım.</div>
+            
+                        <!-- Ölçekli Sorular Başlangıcı -->
+
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Kendi değer ve ilkelerimin, davranışımı nasıl etkilediğini ve diğerleri üzerindeki etkilerinin ne olduğunu düşünürüm.</div>
                             <div class="scale-options">
                                 <input type="radio" name="scale-1" value="1" required>
                                 <input type="radio" name="scale-1" value="2">
                                 <input type="radio" name="scale-1" value="3">
                             </div>
+                            </div>
                         </div>
                         
-                        <div class="scale-item">
-                            <div class="scale-question">2. Ekip üyelerinin görüşlerini dinlerim.</div>
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Güçlü ve zayıf yanlarıma ilişkin diğer kişilerden geri bildirim almak ve davranışımı buna göre değiştirmek isterim.</div>
                             <div class="scale-options">
                                 <input type="radio" name="scale-2" value="1" required>
                                 <input type="radio" name="scale-2" value="2">
                                 <input type="radio" name="scale-2" value="3">
                             </div>
+                            </div>
                         </div>
                         
-                        <div class="scale-item">
-                            <div class="scale-question">3. Ekip üyeleriyle saygılı iletişim kurarım.</div>
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">İşimi yaparken, baskı altında sakin ve odaklanmış kalırım.</div>
                             <div class="scale-options">
                                 <input type="radio" name="scale-3" value="1" required>
                                 <input type="radio" name="scale-3" value="2">
                                 <input type="radio" name="scale-3" value="3">
                             </div>
+                            </div>
                         </div>
                         
-                        <div class="scale-item">
-                            <div class="scale-question">4. Ekip içinde ortaya çıkan çatışmaları yönetirim.</div>
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">İş yükümü planlar, sorumluluklarımı istikrarlı bir biçimde yerine getiririm.</div>
                             <div class="scale-options">
                                 <input type="radio" name="scale-4" value="1" required>
                                 <input type="radio" name="scale-4" value="2">
                                 <input type="radio" name="scale-4" value="3">
                             </div>
+                            </div>
                         </div>
                         
-                        <div class="scale-item">
-                            <div class="scale-question">5. Ekip üyelerinin birbirlerini dinlemelerini teşvik ederim.</div>
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Öğrenmek ve kendimi geliştirmek için sürekli olarak fırsat ararım.</div>
                             <div class="scale-options">
                                 <input type="radio" name="scale-5" value="1" required>
                                 <input type="radio" name="scale-5" value="2">
                                 <input type="radio" name="scale-5" value="3">
                             </div>
+                            </div>
                         </div>
                         
-                        <!-- Note: In a real implementation, you would include all 40 scale items here -->
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Öğrendiklerimi uygulamaya koyarım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-6" value="1" required>
+                                <input type="radio" name="scale-6" value="2">
+                                <input type="radio" name="scale-6" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Diğer insanların kültürüne, inançlarına ve yeteneklerine saygı duyarım ve onlara karşı, açık, dürüst ve kapsayıcı bir şekilde davranırım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-7" value="1" required>
+                                <input type="radio" name="scale-7" value="2">
+                                <input type="radio" name="scale-7" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Etik kavramlar veya değerlerin zarar gördüğünü hissettiğimde, bunu dile getiririm.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-8" value="1" required>
+                                <input type="radio" name="scale-8" value="2">
+                                <input type="radio" name="scale-8" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Diğerleriyle ortak çalışmanın hasta bakımına katkı sağlayacağı durumlarda, fırsatları değerlendiririm.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-9" value="1" required>
+                                <input type="radio" name="scale-9" value="2">
+                                <input type="radio" name="scale-9" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">İş ağları arasında, bilgi ve kaynak paylaşımı yaparım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-10" value="1" required>
+                                <input type="radio" name="scale-10" value="2">
+                                <input type="radio" name="scale-10" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Diğerleriyle açık ve etkili bir iletişim kurarım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-11" value="1" required>
+                                <input type="radio" name="scale-11" value="2">
+                                <input type="radio" name="scale-11" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Diğerlerinin ihtiyaçlarını ve duygularını önemser, onları dikkate alırım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-12" value="1" required>
+                                <input type="radio" name="scale-12" value="2">
+                                <input type="radio" name="scale-12" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Diğerlerinin sağlayacağı katkı ve görüşleri, her zaman isterim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-13" value="1" required>
+                                <input type="radio" name="scale-13" value="2">
+                                <input type="radio" name="scale-13" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Çıkar çatışmalarını ve fikir ayrılıklarını, rahatlıkla yönetebilirim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-14" value="1" required>
+                                <input type="radio" name="scale-14" value="2">
+                                <input type="radio" name="scale-14" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Doğru insanlarla doğru zamanda bir arada olduğumda, takım liderliği konusunda kendimi öne sürerim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-15" value="1" required>
+                                <input type="radio" name="scale-15" value="2">
+                                <input type="radio" name="scale-15" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Takım içinde diğerlerinin çabalarının farkında olur ve onları takdir eder, takımın kararına saygı duyarım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-16" value="1" required>
+                                <input type="radio" name="scale-16" value="2">
+                                <input type="radio" name="scale-16" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Plan geliştirirken, hastalardan, hizmet kullanıcılarından ve iş arkadaşlarımdan gelen geri bildirimleri kullanırım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-17" value="1" required>
+                                <input type="radio" name="scale-17" value="2">
+                                <input type="radio" name="scale-17" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Mevcut seçenekleri, fayda ve riskler açısından değerlendiririm.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-18" value="1" required>
+                                <input type="radio" name="scale-18" value="2">
+                                <input type="radio" name="scale-18" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Belirlenen kaynaklar dahilinde, güvenli ve etkin hizmetler sunarım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-19" value="1" required>
+                                <input type="radio" name="scale-19" value="2">
+                                <input type="radio" name="scale-19" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Kaynaklar, etkili ve verimli olarak kullanılmadığında; harekete geçerim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-20" value="1" required>
+                                <input type="radio" name="scale-20" value="2">
+                                <input type="radio" name="scale-20" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Rollerin ve sorumlulukların geliştirilmesinde, takım üyelerini desteklerim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-21" value="1" required>
+                                <input type="radio" name="scale-21" value="2">
+                                <input type="radio" name="scale-21" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Diğerlerine, net bir amaç ve yön belirlerim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-22" value="1" required>
+                                <input type="radio" name="scale-22" value="2">
+                                <input type="radio" name="scale-22" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Performansa ilişkin pek çok kaynaktan edindiğim bilgiyi, incelerim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-23" value="1" required>
+                                <input type="radio" name="scale-23" value="2">
+                                <input type="radio" name="scale-23" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Performansı geliştirmek için harekete geçerim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-24" value="1" required>
+                                <input type="radio" name="scale-24" value="2">
+                                <input type="radio" name="scale-24" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Hasta güvenliğinde eksiklikler gördüğümde, harekete geçerim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-25" value="1" required>
+                                <input type="radio" name="scale-25" value="2">
+                                <input type="radio" name="scale-25" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Hasta güvenliğini geliştirmek ve riski en aza indirmek için, uygulamaları gözden geçiririm.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-26" value="1" required>
+                                <input type="radio" name="scale-26" value="2">
+                                <input type="radio" name="scale-26" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Hizmet sunumunun iyileştirilmesine katkıda bulunmak için; hastalar, hasta yakınları ve hizmet kullanıcılarından gelen geri bildirimleri kullanırım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-27" value="1" required>
+                                <input type="radio" name="scale-27" value="2">
+                                <input type="radio" name="scale-27" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Hizmetlerimizi yapıcı bir şekilde değerlendirmek için, diğerleriyle çalışırım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-28" value="1" required>
+                                <input type="radio" name="scale-28" value="2">
+                                <input type="radio" name="scale-28" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Hizmet kalitesini geliştirmek için fikirler öne sürerim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-29" value="1" required>
+                                <input type="radio" name="scale-29" value="2">
+                                <input type="radio" name="scale-29" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Çeşitli insanlarla yeni fikirler hakkında yapılacak tartışmaları teşvik ederim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-30" value="1" required>
+                                <input type="radio" name="scale-30" value="2">
+                                <input type="radio" name="scale-30" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Değişiklik ihtiyacının, insanlar ile hizmetler üzerindeki etkisini dile getiririm.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-31" value="1" required>
+                                <input type="radio" name="scale-31" value="2">
+                                <input type="radio" name="scale-31" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Değişikliğin sağlanması için kendim odaklanır ve diğerlerini de bu konuda motive ederim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-32" value="1" required>
+                                <input type="radio" name="scale-32" value="2">
+                                <input type="radio" name="scale-32" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Değişim faktörlerini (örn. Siyasi, sosyal, teknik, ekonomik, örgütsel, mesleki çevre) tanımlarım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-33" value="1" required>
+                                <input type="radio" name="scale-33" value="2">
+                                <input type="radio" name="scale-33" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Gelecekte değişim ihtiyacı doğuracak zorlukları tahmin eder, bunları diğerlerine iletirim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-34" value="1" required>
+                                <input type="radio" name="scale-34" value="2">
+                                <input type="radio" name="scale-34" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Hizmetlerin iyileştirilmesi için, veri ve bilgileri kullanırım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-35" value="1" required>
+                                <input type="radio" name="scale-35" value="2">
+                                <input type="radio" name="scale-35" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">En iyi uygulamaya ulaşmak için bilgi ve kanıtların kullanılması yönünde diğerlerini de etkilerim.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-36" value="1" required>
+                                <input type="radio" name="scale-36" value="2">
+                                <input type="radio" name="scale-36" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Karar verirken; hizmet değerlerini ve önceliklerini dikkate alır, anahtar kişi ve gruplara danışırım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-37" value="1" required>
+                                <input type="radio" name="scale-37" value="2">
+                                <input type="radio" name="scale-37" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Hizmetlerin geleceği ile ilgili olarak resmi ve gayri resmi karar verme süreçlerine aktif olarak katılırım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-38" value="1" required>
+                                <input type="radio" name="scale-38" value="2">
+                                <input type="radio" name="scale-38" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Yeni yöntemleri uygulamaya koymak adına, sorumluluk alırım.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-39" value="1" required>
+                                <input type="radio" name="scale-39" value="2">
+                                <input type="radio" name="scale-39" value="3">
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-card">
+                            <div class="scale-item">
+                            <div class="scale-question">Değişimlerin, hastalar ve hizmet sunumu üzerindeki etkisini değerlendiririm.</div>
+                            <div class="scale-options">
+                                <input type="radio" name="scale-40" value="1" required>
+                                <input type="radio" name="scale-40" value="2">
+                                <input type="radio" name="scale-40" value="3">
+                            </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="error-message" id="scale-error">Lütfen tüm ölçek maddelerini cevaplayınız.</div>
                     
                     <div class="btn-container">
-                        <button type="button" class="back-btn" onclick="goToPage('page2')">Geri</button>
                         <button type="button" id="page3Next">İleri</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Page 4: Previous Experience -->
-            <div class="form-page" id="page4">
-                <div class="form-section">
-                    <h1>Eğitim ve Deneyim</h1>
-                    <div class="form-progress">
-                        <div class="progress-dot active"></div>
-                        <div class="progress-dot active"></div>
-                        <div class="progress-dot active"></div>
-                        <div class="progress-dot active"></div>
-                        <div class="progress-dot"></div>
-                    </div>
-                    
-                    <div class="question">Daha önce liderlik eğitimi aldınız mı? <span class="required">*</span></div>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="leadership-edu-yes" name="leadership-edu" value="Evet" required>
-                            <label for="leadership-edu-yes">Evet</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="leadership-edu-no" name="leadership-edu" value="Hayır">
-                            <label for="leadership-edu-no">Hayır</label>
-                        </div>
-                    </div>
-                    <div class="error-message" id="leadership-edu-error">Bu soruyu cevaplamanız gerekmektedir.</div>
-                    
-                    <div class="question">Daha önce kişisel gelişim eğitimleri aldınız mı? <span class="required">*</span></div>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="personal-dev-yes" name="personal-dev" value="Evet" required onchange="toggleConditionalInput('personal-dev')">
-                            <label for="personal-dev-yes">Evet</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="personal-dev-no" name="personal-dev" value="Hayır" onchange="toggleConditionalInput('personal-dev')">
-                            <label for="personal-dev-no">Hayır</label>
-                        </div>
-                    </div>
-                    <div class="conditional-input" id="personal-dev-conditional">
-                        <div class="text-input">
-                            <textarea id="personal-dev-details" name="personal-dev-details" placeholder="Açıklayınız lütfen (zorunlu)" rows="3"></textarea>
-                        </div>
-                        <div class="error-message" id="personal-dev-details-error">Bu alanı doldurmanız gerekmektedir.</div>
-                    </div>
-                    
-                    <div class="question">Yaz tatillerinde gönüllü ve eğitim amaçlı olarak sağlık kurumlarında bulundunuz mu? <span class="required">*</span></div>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="volunteer-yes" name="volunteer" value="Evet" required onchange="toggleConditionalInput('volunteer')">
-                            <label for="volunteer-yes">Evet</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="volunteer-no" name="volunteer" value="Hayır" onchange="toggleConditionalInput('volunteer')">
-                            <label for="volunteer-no">Hayır</label>
-                        </div>
-                    </div>
-                    <div class="conditional-input" id="volunteer-conditional">
-                        <div class="text-input">
-                            <textarea id="volunteer-details" name="volunteer-details" placeholder="Açıklayınız lütfen (zorunlu)" rows="3"></textarea>
-                        </div>
-                        <div class="error-message" id="volunteer-details-error">Bu alanı doldurmanız gerekmektedir.</div>
-                    </div>
-                    
-                    <div class="question">Eğitim süresince, ilerideki meslek hayatınızdaki hekimlik davranışlarınızda olumlu anlamda kendinize örnek aldığınız hekim veya hocalarınız ya da olaylar oldu mu? <span class="required">*</span></div>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="positive-role-yes" name="positive-role" value="Evet" required onchange="toggleConditionalInput('positive-role')">
-                            <label for="positive-role-yes">Evet</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="positive-role-no" name="positive-role" value="Hayır" onchange="toggleConditionalInput('positive-role')">
-                            <label for="positive-role-no">Hayır</label>
-                        </div>
-                    </div>
-                    <div class="conditional-input" id="positive-role-conditional">
-                        <div class="text-input">
-                            <textarea id="positive-role-details" name="positive-role-details" placeholder="Açıklayınız lütfen (zorunlu)" rows="3"></textarea>
-                        </div>
-                        <div class="error-message" id="positive-role-details-error">Bu alanı doldurmanız gerekmektedir.</div>
-                    </div>
-                    
-                    <div class="question">Eğitim süresince, ilerideki meslek hayatınızdaki hekimlik davranışlarınızda olumsuz anlamda kendinize örnek aldığınız hekim veya hocalarınız ya da olaylar oldu mu? <span class="required">*</span></div>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="negative-role-yes" name="negative-role" value="Evet" required onchange="toggleConditionalInput('negative-role')">
-                            <label for="negative-role-yes">Evet</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="negative-role-no" name="negative-role" value="Hayır" onchange="toggleConditionalInput('negative-role')">
-                            <label for="negative-role-no">Hayır</label>
-                        </div>
-                    </div>
-                    <div class="conditional-input" id="negative-role-conditional">
-                        <div class="text-input">
-                            <textarea id="negative-role-details" name="negative-role-details" placeholder="Açıklayınız lütfen (zorunlu)" rows="3"></textarea>
-                        </div>
-                        <div class="error-message" id="negative-role-details-error">Bu alanı doldurmanız gerekmektedir.</div>
-                    </div>
-                    
-                    <div class="question">Eğitim süresince, ilerideki meslek hayatınızdaki iletişim davranışlarınızda olumlu anlamda kendinize örnek aldığınız hekim veya hocalarınız ya da olaylar oldu mu? <span class="required">*</span></div>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="positive-comm-yes" name="positive-comm" value="Evet" required onchange="toggleConditionalInput('positive-comm')">
-                            <label for="positive-comm-yes">Evet</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="positive-comm-no" name="positive-comm" value="Hayır" onchange="toggleConditionalInput('positive-comm')">
-                            <label for="positive-comm-no">Hayır</label>
-                        </div>
-                    </div>
-                    <div class="conditional-input" id="positive-comm-conditional">
-                        <div class="text-input">
-                            <textarea id="positive-comm-details" name="positive-comm-details" placeholder="Açıklayınız lütfen (zorunlu)" rows="3"></textarea>
-                        </div>
-                        <div class="error-message" id="positive-comm-details-error">Bu alanı doldurmanız gerekmektedir.</div>
-                    </div>
-                    
-                    <div class="question">Eğitim süresince, ilerideki meslek hayatınızdaki iletişim davranışlarınızda olumsuz anlamda kendinize örnek aldığınız hekim veya hocalarınız ya da olaylar oldu mu? <span class="required">*</span></div>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="negative-comm-yes" name="negative-comm" value="Evet" required onchange="toggleConditionalInput('negative-comm')">
-                            <label for="negative-comm-yes">Evet</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="negative-comm-no" name="negative-comm" value="Hayır" onchange="toggleConditionalInput('negative-comm')">
-                            <label for="negative-comm-no">Hayır</label>
-                        </div>
-                    </div>
-                    <div class="conditional-input" id="negative-comm-conditional">
-                        <div class="text-input">
-                            <textarea id="negative-comm-details" name="negative-comm-details" placeholder="Açıklayınız lütfen (zorunlu)" rows="3"></textarea>
-                        </div>
-                        <div class="error-message" id="negative-comm-details-error">Bu alanı doldurmanız gerekmektedir.</div>
-                    </div>
-                    
-                    <div class="btn-container">
-                        <button type="button" class="back-btn" onclick="goToPage('page3')">Geri</button>
-                        <button type="button" id="page4Next">İleri</button>
-                    </div>
+        <!-- Page 4: Previous Experience -->
+<div class="form-page" id="page4">
+    <div class="form-section">
+        <h1>Eğitim ve Deneyim</h1>
+
+        <!-- Liderlik Eğitimi -->
+        <div class="form-card">
+            <div class="question">Daha önce liderlik eğitimi aldınız mı? <span class="required">*</span></div>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="leadership-edu-yes" name="leadership-edu" value="Evet" required>
+                    <label for="leadership-edu-yes">Evet</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="leadership-edu-no" name="leadership-edu" value="Hayır">
+                    <label for="leadership-edu-no">Hayır</label>
                 </div>
             </div>
+            <div class="error-message" id="leadership-edu-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+        </div>
+
+        <!-- Kişisel Gelişim Eğitimi -->
+        <div class="form-card">
+            <div class="question">Daha önce kişisel gelişim eğitimleri aldınız mı? <span class="required">*</span></div>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="personal-dev-yes" name="personal-dev" value="Evet" required onchange="toggleConditionalInput('personal-dev')">
+                    <label for="personal-dev-yes">Evet</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="personal-dev-no" name="personal-dev" value="Hayır" onchange="toggleConditionalInput('personal-dev')">
+                    <label for="personal-dev-no">Hayır</label>
+                </div>
+            </div>
+            <div class="error-message" id="personal-dev-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+            <div class="conditional-input" id="personal-dev-conditional">
+                <div class="text-input">
+                    <textarea id="personal-dev-details" name="personal-dev-details" placeholder="Lütfen Açıklayınız" rows="3"></textarea>
+                </div>
+                <div class="error-message" id="personal-dev-details-error">Bu alanı doldurmanız gerekmektedir.</div>
+            </div>
+        </div>
+
+        <!-- Gönüllülük Deneyimi -->
+        <div class="form-card">
+            <div class="question">Yaz tatillerinde gönüllü ve eğitim amaçlı olarak sağlık kurumlarında bulundunuz mu? <span class="required">*</span></div>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="volunteer-yes" name="volunteer" value="Evet" required onchange="toggleConditionalInput('volunteer')">
+                    <label for="volunteer-yes">Evet</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="volunteer-no" name="volunteer" value="Hayır" onchange="toggleConditionalInput('volunteer')">
+                    <label for="volunteer-no">Hayır</label>
+                </div>
+            </div>
+            <div class="error-message" id="volunteer-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+            <div class="conditional-input" id="volunteer-conditional">
+                <div class="text-input">
+                    <textarea id="volunteer-details" name="volunteer-details" placeholder="Lütfen Açıklayınız" rows="3"></textarea>
+                </div>
+                <div class="error-message" id="volunteer-details-error">Bu alanı doldurmanız gerekmektedir.</div>
+            </div>
+        </div>
+
+        <!-- Olumlu Hekim Davranışları -->
+        <div class="form-card">
+            <div class="question">Hekimlik davranışlarınızda olumlu örnek aldığınız kişi/olaylar oldu mu? <span class="required">*</span></div>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="positive-role-yes" name="positive-role" value="Evet" required onchange="toggleConditionalInput('positive-role')">
+                    <label for="positive-role-yes">Evet</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="positive-role-no" name="positive-role" value="Hayır" onchange="toggleConditionalInput('positive-role')">
+                    <label for="positive-role-no">Hayır</label>
+                </div>
+            </div>
+            <div class="error-message" id="positive-role-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+            <div class="conditional-input" id="positive-role-conditional">
+                <div class="text-input">
+                    <textarea id="positive-role-details" name="positive-role-details" placeholder="Lütfen Açıklayınız" rows="3"></textarea>
+                </div>
+                <div class="error-message" id="positive-role-details-error">Bu alanı doldurmanız gerekmektedir.</div>
+            </div>
+        </div>
+
+        <!-- Olumsuz Hekim Davranışları -->
+        <div class="form-card">
+            <div class="question">Hekimlik davranışlarınızda olumsuz örnek aldığınız kişi/olaylar oldu mu? <span class="required">*</span></div>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="negative-role-yes" name="negative-role" value="Evet" required onchange="toggleConditionalInput('negative-role')">
+                    <label for="negative-role-yes">Evet</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="negative-role-no" name="negative-role" value="Hayır" onchange="toggleConditionalInput('negative-role')">
+                    <label for="negative-role-no">Hayır</label>
+                </div>
+            </div>
+            <div class="error-message" id="negative-role-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+            <div class="conditional-input" id="negative-role-conditional">
+                <div class="text-input">
+                    <textarea id="negative-role-details" name="negative-role-details" placeholder="Lütfen Açıklayınız" rows="3"></textarea>
+                </div>
+                <div class="error-message" id="negative-role-details-error">Bu alanı doldurmanız gerekmektedir.</div>
+            </div>
+        </div>
+
+        <!-- Olumlu İletişim Davranışları -->
+        <div class="form-card">
+            <div class="question">İletişim davranışlarınızda olumlu örnek aldığınız kişi/olaylar oldu mu? <span class="required">*</span></div>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="positive-comm-yes" name="positive-comm" value="Evet" required onchange="toggleConditionalInput('positive-comm')">
+                    <label for="positive-comm-yes">Evet</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="positive-comm-no" name="positive-comm" value="Hayır" onchange="toggleConditionalInput('positive-comm')">
+                    <label for="positive-comm-no">Hayır</label>
+                </div>
+            </div>
+            <div class="error-message" id="positive-comm-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+            <div class="conditional-input" id="positive-comm-conditional">
+                <div class="text-input">
+                    <textarea id="positive-comm-details" name="positive-comm-details" placeholder="Lütfen Açıklayınız" rows="3"></textarea>
+                </div>
+                <div class="error-message" id="positive-comm-details-error">Bu alanı doldurmanız gerekmektedir.</div>
+            </div>
+        </div>
+
+        <!-- Olumsuz İletişim Davranışları -->
+        <div class="form-card">
+            <div class="question">İletişim davranışlarınızda olumsuz örnek aldığınız kişi/olaylar oldu mu? <span class="required">*</span></div>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="negative-comm-yes" name="negative-comm" value="Evet" required onchange="toggleConditionalInput('negative-comm')">
+                    <label for="negative-comm-yes">Evet</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="negative-comm-no" name="negative-comm" value="Hayır" onchange="toggleConditionalInput('negative-comm')">
+                    <label for="negative-comm-no">Hayır</label>
+                </div>
+            </div>
+            <div class="error-message" id="negative-comm-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+            <div class="conditional-input" id="negative-comm-conditional">
+                <div class="text-input">
+                    <textarea id="negative-comm-details" name="negative-comm-details" placeholder="Lütfen Açıklayınız" rows="3"></textarea>
+                </div>
+                <div class="error-message" id="negative-comm-details-error">Bu alanı doldurmanız gerekmektedir.</div>
+            </div>
+        </div>
+
+        <!-- Next Button -->
+        <div class="btn-container">
+            <button type="button" id="page4Next">İleri</button>
+        </div>
+    </div>
+</div>
 
 <!-- Page 5: Future Plans -->
 <div class="form-page" id="page5">
     <div class="form-section">
         <h1>Gelecek Planları</h1>
-        <div class="form-progress">
-            <div class="progress-dot active"></div>
-            <div class="progress-dot active"></div>
-            <div class="progress-dot active"></div>
-            <div class="progress-dot active"></div>
-            <div class="progress-dot active"></div>
-        </div>
         
+        <div class="form-card">
         <div class="question">Pratisyen hekimlik becerileri açısından kendinizi nasıl değerlendirirsiniz? <span class="required">*</span></div>
         <div class="radio-group">
             <div class="radio-option">
@@ -617,8 +1040,9 @@
                 <label for="skills-good">Oldukça iyi olduğumu düşünüyorum</label>
             </div>
         </div>
-        <div class="error-message" id="doctor-skills-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+        <div class="error-message" id="doctor-skills-error">Bu soruyu cevaplamanız gerekmektedir.</div></div>
         
+        <div class="form-card">
         <div class="question">Mezuniyet sonrası planınız nedir? <span class="required">*</span></div>
         <div class="radio-group">
             <div class="radio-option">
@@ -634,13 +1058,15 @@
                 <label for="plan-other">Başka bir planım var</label>
             </div>
         </div>
+        <div class="error-message" id="future-plan-error">Bu soruyu cevaplamanız gerekmektedir.</div>
         <div class="conditional-input" id="future-plan-conditional">
             <div class="text-input">
-                <textarea id="future-plan-details" name="future-plan-details" placeholder="Açıklayınız lütfen (zorunlu)" rows="3"></textarea>
+                <textarea id="future-plan-details" name="future-plan-details" placeholder="Lütfen Açıklayınız" rows="3"></textarea>
             </div>
-            <div class="error-message" id="future-plan-details-error">Bu alanı doldurmanız gerekmektedir.</div>
+            <div class="error-message" id="future-plan-details-error">Bu alanı doldurmanız gerekmektedir.</div></div>
         </div>
 
+        <div class="form-card">
         <div class="question">Sağlık alanında yönetici olarak görev yapmak ister misiniz? <span class="required">*</span></div>
         <div class="radio-group">
             <div class="radio-option">
@@ -651,8 +1077,10 @@
                 <input type="radio" id="manager-no" name="manager" value="Hayır" onchange="toggleConditionalInput('manager')">
                 <label for="manager-no">Hayır</label>
             </div>
-        </div>
+        </div></div>
+        <div class="error-message" id="manager-error">Bu soruyu cevaplamanız gerekmektedir.</div>
         <div class="conditional-input" id="manager-conditional">
+            <div class="form-card">
             <div class="question">Kendinizi bu açıdan nasıl görüyorsunuz?</div>
             <div class="radio-group">
                 <div class="radio-option">
@@ -669,10 +1097,9 @@
                 </div>
             </div>
         </div>
-        <div class="error-message" id="manager-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+        <div class="error-message" id="manager-error">Bu soruyu cevaplamanız gerekmektedir.</div></div>
         
         <div class="btn-container">
-            <button type="button" class="back-btn" onclick="goToPage('page4')">Geri</button>
             <button type="button" id="page5Next">İleri</button>
         </div>
     </div>
@@ -682,14 +1109,8 @@
 <div class="form-page" id="page6">
     <div class="form-section">
         <h1>Son Sorular</h1>
-        <div class="form-progress">
-            <div class="progress-dot active"></div>
-            <div class="progress-dot active"></div>
-            <div class="progress-dot active"></div>
-            <div class="progress-dot active"></div>
-            <div class="progress-dot active"></div>
-        </div>
         
+        <div class="form-card">
         <div class="question">Hekimliği severek yapacağınızı düşünüyor musunuz? <span class="required">*</span></div>
         <div class="radio-group">
             <div class="radio-option">
@@ -705,15 +1126,15 @@
                 <label for="love-job-undecided">Kararsızım</label>
             </div>
         </div>
-        <div class="error-message" id="love-job-error">Bu soruyu cevaplamanız gerekmektedir.</div>
+        <div class="error-message" id="love-job-error">Bu soruyu cevaplamanız gerekmektedir.</div></div>
         
+        <div class="form-card">
         <div class="question">Geçirdiğiniz 6 yıllık eğitim ve önünüzde bekleyen bir meslek hayatı var. Genel olarak bunlara dair ifade etmek istediğiniz hususlar var mı?</div>
         <div class="text-input">
             <textarea id="final-thoughts" name="final-thoughts" rows="5"></textarea>
-        </div>
+        </div></div>
         
         <div class="btn-container">
-            <button type="button" class="back-btn" onclick="goToPage('page5')">Geri</button>
             <button type="submit" id="submitButton">Gönder</button>
         </div>
     </div>
@@ -963,7 +1384,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set form target to iframe
     this.target = 'submit-iframe';
-    this.action = "https://script.google.com/macros/s/AKfycbwZw3UYxOFJzz5iPj62U47TJHoSUdjRQluV93G18lTafP6GGSJumIY_ED3amRDgENYhjA/exec"; 
+    this.action = "https://script.google.com/macros/s/AKfycbxj3Z88aJpJSUNkMiMNpWRF68cwqqvi_r2ralHTOc0JpVOOQlB7D_TEDmJHM4D4PEKyEA/exec"; 
     
     // Add method attribute
     this.method = 'post';
