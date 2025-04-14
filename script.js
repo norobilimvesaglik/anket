@@ -203,10 +203,74 @@ function setupDeselectableRadios() {
     });
 }
 
+// Form progress functions
+function saveFormProgress() {
+    const formData = {
+        currentPage: document.querySelector('.form-page.active').id,
+        answers: {}
+    };
+
+    // Save all radio button answers
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        if (radio.checked) {
+            formData.answers[radio.name] = radio.value;
+        }
+    });
+
+    // Save all text inputs and textareas
+    document.querySelectorAll('input[type="text"], textarea').forEach(input => {
+        if (input.value) {
+            formData.answers[input.name] = input.value;
+        }
+    });
+
+    localStorage.setItem('formProgress', JSON.stringify(formData));
+}
+
+function restoreFormProgress() {
+    const savedProgress = localStorage.getItem('formProgress');
+    if (!savedProgress) return;
+
+    const formData = JSON.parse(savedProgress);
+
+    // Restore radio button answers
+    Object.entries(formData.answers).forEach(([name, value]) => {
+        const input = document.querySelector(`input[name="${name}"][value="${value}"]`);
+        if (input && input.type === 'radio') {
+            input.checked = true;
+            // Trigger change event for conditional inputs
+            if (conditionalFields.includes(name)) {
+                toggleConditionalInput(name);
+            }
+        }
+    });
+
+    // Restore text inputs and textareas
+    Object.entries(formData.answers).forEach(([name, value]) => {
+        const input = document.querySelector(`input[name="${name}"][type="text"], textarea[name="${name}"]`);
+        if (input) {
+            input.value = value;
+        }
+    });
+
+    // Go to last active page
+    if (formData.currentPage) {
+        goToPage(formData.currentPage);
+    }
+
+    // Update scale progress if on scale page
+    if (formData.currentPage === 'page3') {
+        updateScaleProgress();
+    }
+}
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Set up deselectable radio buttons
     setupDeselectableRadios();
+
+    // Restore form progress
+    restoreFormProgress();
 
     // Set up page navigation
     document.getElementById('page1Next').addEventListener('click', function() {
@@ -217,76 +281,104 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             goToPage('page2');
+            saveFormProgress();
         }
     });
     
     document.getElementById('page2Next').addEventListener('click', function() {
         if (validatePage('page2')) {
             goToPage('page3');
+            saveFormProgress();
         }
     });
     
     document.getElementById('page3Next').addEventListener('click', function() {
         if (validatePage('page3')) {
             goToPage('page4');
+            saveFormProgress();
         }
     });
     
     document.getElementById('page4Next').addEventListener('click', function() {
         if (validatePage('page4')) {
             goToPage('page5');
+            saveFormProgress();
         }
     });
     
     document.getElementById('page5Next').addEventListener('click', function() {
         if (validatePage('page5')) {
             goToPage('page6');
+            saveFormProgress();
         }
     });
-    
+
     // Set up radio button change listeners for conditional inputs
     conditionalFields.forEach(field => {
         const radioButtons = document.querySelectorAll(`input[name="${field}"]`);
         radioButtons.forEach(radio => {
             radio.addEventListener('change', function() {
                 toggleConditionalInput(field);
+                saveFormProgress();
             });
         });
     });
 
+    // Save progress when radio buttons change
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', saveFormProgress);
+    });
+
+    // Save progress when text inputs change
+    document.querySelectorAll('input[type="text"], textarea').forEach(input => {
+        input.addEventListener('change', saveFormProgress);
+        input.addEventListener('input', saveFormProgress);
+    });
+
+    // Clear saved progress when form is submitted successfully
     document.getElementById('surveyForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+        e.preventDefault();
+        
+        if (!validatePage('page6')) {
+            alert("Lütfen tüm gerekli alanları doldurunuz.");
+            return;
+        }
+        
+        const submitButton = document.getElementById('submitButton');
+        submitButton.textContent = "Gönderiliyor...";
+        submitButton.disabled = true;
+        
+        let iframe = document.createElement('iframe');
+        iframe.name = 'submit-iframe';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        
+        this.target = 'submit-iframe';
+        this.action = "https://script.google.com/macros/s/AKfycbxj3Z88aJpJSUNkMiMNpWRF68cwqqvi_r2ralHTOc0JpVOOQlB7D_TEDmJHM4D4PEKyEA/exec";
+        this.method = 'post';
+        
+        this.submit();
+        
+        setTimeout(function() {
+            localStorage.removeItem('formProgress');
+            goToPage('thank-you-page');
+        }, 2000);
+    });
+
+    // Set up scale progress tracking
+    const scaleRadios = document.querySelectorAll('.scale-item:not(.scale-header) input[type="radio"]');
+    scaleRadios.forEach(radio => {
+        radio.addEventListener('change', updateScaleProgress);
+    });
     
-    if (!validatePage('page6')) {
-        alert("Lütfen tüm gerekli alanları doldurunuz.");
-        return;
-    }
-    
-    // Show loading indicator or message
-    const submitButton = document.getElementById('submitButton');
-    submitButton.textContent = "Gönderiliyor...";
-    submitButton.disabled = true;
-    
-    // Create a hidden iframe
-    let iframe = document.createElement('iframe');
-    iframe.name = 'submit-iframe';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    
-    // Set form target to iframe
-    this.target = 'submit-iframe';
-    this.action = "https://script.google.com/macros/s/AKfycbxj3Z88aJpJSUNkMiMNpWRF68cwqqvi_r2ralHTOc0JpVOOQlB7D_TEDmJHM4D4PEKyEA/exec"; 
-    
-    // Add method attribute
-    this.method = 'post';
-    
-    // Submit the form
-    this.submit();
-    
-    // Show thank you page after a short delay
-    setTimeout(function() {
-        goToPage('thank-you-page');
-    }, 2000);
+    // Initialize progress
+    updateScaleProgress();
+
+    // Set up keyboard navigation
+    document.addEventListener('keydown', handleKeyboardNavigation);
+
+    // Set up question navigation
+    setupQuestionNavigation();
 });
 
 // Add this new function to track progress
@@ -372,21 +464,3 @@ function setupQuestionNavigation() {
     updateNavigationButtons();
 }
 
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // Set up progress tracking
-    const scaleRadios = document.querySelectorAll('.scale-item:not(.scale-header) input[type="radio"]');
-    scaleRadios.forEach(radio => {
-        radio.addEventListener('change', updateScaleProgress);
-    });
-    
-    // Initialize progress
-    updateScaleProgress();
-
-    // Set up keyboard navigation
-    document.addEventListener('keydown', handleKeyboardNavigation);
-
-    // Set up question navigation
-    setupQuestionNavigation();
-});
-});
