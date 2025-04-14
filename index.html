@@ -4,203 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NSK - Anket</title>
-    <style>
-        :root {
-            --primary-color: #673AB7;
-            --border-color: #DADCE0;
-            --bg-color: #F0EBF8;
-            --text-color: #202124;
-            --error-color: #D93025;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #F0F0F0;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 768px;
-            margin: 40px auto;
-        }
-        
-        .form-section {
-            background-color: white;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            padding: 24px;
-            border-top: 10px solid var(--primary-color);
-        }
-        
-        .question-section {
-            background-color: white;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            padding: 24px;
-        }
-        
-        h1 {
-            color: var(--text-color);
-            font-size: 32px;
-            margin-bottom: 12px;
-            font-weight: 400;
-        }
-        
-        .description {
-            color: #5F6368;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        
-        .required {
-            color: var(--error-color);
-            margin-left: 4px;
-        }
-        
-        .question {
-            margin-bottom: 8px;
-            font-size: 16px;
-            font-weight: 500;
-        }
-        
-        .radio-group, .checkbox-group {
-            margin-bottom: 16px;
-        }
-        
-        .radio-option, .checkbox-option {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        
-        input[type="radio"], input[type="checkbox"] {
-            margin-right: 10px;
-            min-width: 20px;
-            min-height: 20px;
-        }
-        
-        input[type="text"], textarea, select {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
-        
-        input[type="text"]:focus, textarea:focus, select:focus {
-            outline: none;
-            border: 2px solid var(--primary-color);
-        }
-        
-        .text-input {
-            margin-bottom: 16px;
-        }
-        
-        .conditional-input {
-            margin-left: 32px;
-            margin-top: 8px;
-            display: none;
-        }
-        
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            float: right;
-        }
-        
-        button:hover {
-            background-color: #5E35B1;
-        }
-        
-        .form-progress {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .form-card {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .form-page {
-            display: none;
-        }
-        
-        .form-page.active {
-            display: block;
-        }
-        
-        .error-message {
-            color: var(--error-color);
-            font-size: 16px;
-            margin-top: 4px;
-            display: none;
-        }
-        
-        .btn-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 24px;
-        }
-        
-        .scale-container {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 16px;
-        }
-        
-        .scale-item {
-            display: flex;
-            padding: 8px 0;
-        }
-        
-        .scale-question {
-            flex: 3;
-        }
-        
-        .scale-options {
-            flex: 2;
-            display: flex;
-            justify-content: space-around;
-        }
-        
-        .scale-header {
-            font-weight: bold;
-            text-align: center;
-            padding: 8px 0;
-            border-bottom: 2px solid var(--border-color);
-        }
-        
-        .thank-you {
-            text-align: center;
-            padding: 40px;
-        }
-        
-        .thank-you h2 {
-            color: var(--primary-color);
-            margin-bottom: 16px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -288,8 +93,12 @@
                             <label for="success-medium">Orta</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" id="success-good" name="success" value="İyi/çok iyi">
-                            <label for="success-good">İyi/Çok iyi</label>
+                            <input type="radio" id="success-good" name="success" value="İyi">
+                            <label for="success-good">İyi</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="success-good" name="success" value="Çok iyi">
+                            <label for="success-verygood">Çok iyi</label>
                         </div>
                     </div>
                     <div class="error-message" id="success-error">Bu soruyu cevaplamanız gerekmektedir.</div></div>
@@ -361,11 +170,17 @@
                     
                     <div class="scale-container">
                         <div class="scale-item scale-header">
-                            <div class="scale-question"></div>
+                            <div class="scale-question">Sorular</div>
                             <div class="scale-options">
-                                <div>Neredeyse Asla</div>
-                                <div>Bazen</div>
-                                <div>Neredeyse Her Zaman</div>
+                                <div class="scale-option-label">
+                                    Neredeyse Asla
+                                </div>
+                                <div class="scale-option-label">
+                                    Bazen
+                                </div>
+                                <div class="scale-option-label">
+                                    Neredeyse Her Zaman
+                                </div>
                             </div>
                         </div>
             
@@ -375,9 +190,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Kendi değer ve ilkelerimin, davranışımı nasıl etkilediğini ve diğerleri üzerindeki etkilerinin ne olduğunu düşünürüm.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-1" value="1" required>
-                                <input type="radio" name="scale-1" value="2">
-                                <input type="radio" name="scale-1" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-1" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-1" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-1" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -387,9 +208,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Güçlü ve zayıf yanlarıma ilişkin diğer kişilerden geri bildirim almak ve davranışımı buna göre değiştirmek isterim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-2" value="1" required>
-                                <input type="radio" name="scale-2" value="2">
-                                <input type="radio" name="scale-2" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-2" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-2" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-2" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -399,9 +226,15 @@
                             <div class="scale-item">
                             <div class="scale-question">İşimi yaparken, baskı altında sakin ve odaklanmış kalırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-3" value="1" required>
-                                <input type="radio" name="scale-3" value="2">
-                                <input type="radio" name="scale-3" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-3" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-3" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-3" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -411,9 +244,15 @@
                             <div class="scale-item">
                             <div class="scale-question">İş yükümü planlar, sorumluluklarımı istikrarlı bir biçimde yerine getiririm.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-4" value="1" required>
-                                <input type="radio" name="scale-4" value="2">
-                                <input type="radio" name="scale-4" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-4" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-4" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-4" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -423,9 +262,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Öğrenmek ve kendimi geliştirmek için sürekli olarak fırsat ararım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-5" value="1" required>
-                                <input type="radio" name="scale-5" value="2">
-                                <input type="radio" name="scale-5" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-5" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-5" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-5" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -435,9 +280,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Öğrendiklerimi uygulamaya koyarım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-6" value="1" required>
-                                <input type="radio" name="scale-6" value="2">
-                                <input type="radio" name="scale-6" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-6" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-6" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-6" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -447,9 +298,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Diğer insanların kültürüne, inançlarına ve yeteneklerine saygı duyarım ve onlara karşı, açık, dürüst ve kapsayıcı bir şekilde davranırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-7" value="1" required>
-                                <input type="radio" name="scale-7" value="2">
-                                <input type="radio" name="scale-7" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-7" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-7" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-7" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -459,9 +316,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Etik kavramlar veya değerlerin zarar gördüğünü hissettiğimde, bunu dile getiririm.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-8" value="1" required>
-                                <input type="radio" name="scale-8" value="2">
-                                <input type="radio" name="scale-8" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-8" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-8" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-8" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -471,9 +334,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Diğerleriyle ortak çalışmanın hasta bakımına katkı sağlayacağı durumlarda, fırsatları değerlendiririm.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-9" value="1" required>
-                                <input type="radio" name="scale-9" value="2">
-                                <input type="radio" name="scale-9" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-9" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-9" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-9" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -483,9 +352,15 @@
                             <div class="scale-item">
                             <div class="scale-question">İş ağları arasında, bilgi ve kaynak paylaşımı yaparım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-10" value="1" required>
-                                <input type="radio" name="scale-10" value="2">
-                                <input type="radio" name="scale-10" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-10" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-10" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-10" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -495,9 +370,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Diğerleriyle açık ve etkili bir iletişim kurarım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-11" value="1" required>
-                                <input type="radio" name="scale-11" value="2">
-                                <input type="radio" name="scale-11" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-11" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-11" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-11" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -507,9 +388,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Diğerlerinin ihtiyaçlarını ve duygularını önemser, onları dikkate alırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-12" value="1" required>
-                                <input type="radio" name="scale-12" value="2">
-                                <input type="radio" name="scale-12" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-12" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-12" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-12" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -519,9 +406,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Diğerlerinin sağlayacağı katkı ve görüşleri, her zaman isterim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-13" value="1" required>
-                                <input type="radio" name="scale-13" value="2">
-                                <input type="radio" name="scale-13" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-13" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-13" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-13" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -531,9 +424,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Çıkar çatışmalarını ve fikir ayrılıklarını, rahatlıkla yönetebilirim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-14" value="1" required>
-                                <input type="radio" name="scale-14" value="2">
-                                <input type="radio" name="scale-14" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-14" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-14" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-14" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -543,9 +442,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Doğru insanlarla doğru zamanda bir arada olduğumda, takım liderliği konusunda kendimi öne sürerim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-15" value="1" required>
-                                <input type="radio" name="scale-15" value="2">
-                                <input type="radio" name="scale-15" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-15" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-15" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-15" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -555,9 +460,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Takım içinde diğerlerinin çabalarının farkında olur ve onları takdir eder, takımın kararına saygı duyarım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-16" value="1" required>
-                                <input type="radio" name="scale-16" value="2">
-                                <input type="radio" name="scale-16" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-16" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-16" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-16" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -567,9 +478,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Plan geliştirirken, hastalardan, hizmet kullanıcılarından ve iş arkadaşlarımdan gelen geri bildirimleri kullanırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-17" value="1" required>
-                                <input type="radio" name="scale-17" value="2">
-                                <input type="radio" name="scale-17" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-17" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-17" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-17" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -579,9 +496,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Mevcut seçenekleri, fayda ve riskler açısından değerlendiririm.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-18" value="1" required>
-                                <input type="radio" name="scale-18" value="2">
-                                <input type="radio" name="scale-18" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-18" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-18" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-18" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -591,9 +514,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Belirlenen kaynaklar dahilinde, güvenli ve etkin hizmetler sunarım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-19" value="1" required>
-                                <input type="radio" name="scale-19" value="2">
-                                <input type="radio" name="scale-19" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-19" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-19" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-19" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -603,9 +532,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Kaynaklar, etkili ve verimli olarak kullanılmadığında; harekete geçerim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-20" value="1" required>
-                                <input type="radio" name="scale-20" value="2">
-                                <input type="radio" name="scale-20" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-20" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-20" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-20" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -615,9 +550,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Rollerin ve sorumlulukların geliştirilmesinde, takım üyelerini desteklerim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-21" value="1" required>
-                                <input type="radio" name="scale-21" value="2">
-                                <input type="radio" name="scale-21" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-21" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-21" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-21" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -627,9 +568,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Diğerlerine, net bir amaç ve yön belirlerim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-22" value="1" required>
-                                <input type="radio" name="scale-22" value="2">
-                                <input type="radio" name="scale-22" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-22" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-22" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-22" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -639,9 +586,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Performansa ilişkin pek çok kaynaktan edindiğim bilgiyi, incelerim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-23" value="1" required>
-                                <input type="radio" name="scale-23" value="2">
-                                <input type="radio" name="scale-23" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-23" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-23" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-23" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -651,9 +604,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Performansı geliştirmek için harekete geçerim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-24" value="1" required>
-                                <input type="radio" name="scale-24" value="2">
-                                <input type="radio" name="scale-24" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-24" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-24" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-24" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -663,9 +622,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Hasta güvenliğinde eksiklikler gördüğümde, harekete geçerim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-25" value="1" required>
-                                <input type="radio" name="scale-25" value="2">
-                                <input type="radio" name="scale-25" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-25" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-25" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-25" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -675,9 +640,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Hasta güvenliğini geliştirmek ve riski en aza indirmek için, uygulamaları gözden geçiririm.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-26" value="1" required>
-                                <input type="radio" name="scale-26" value="2">
-                                <input type="radio" name="scale-26" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-26" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-26" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-26" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -687,9 +658,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Hizmet sunumunun iyileştirilmesine katkıda bulunmak için; hastalar, hasta yakınları ve hizmet kullanıcılarından gelen geri bildirimleri kullanırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-27" value="1" required>
-                                <input type="radio" name="scale-27" value="2">
-                                <input type="radio" name="scale-27" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-27" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-27" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-27" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -699,9 +676,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Hizmetlerimizi yapıcı bir şekilde değerlendirmek için, diğerleriyle çalışırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-28" value="1" required>
-                                <input type="radio" name="scale-28" value="2">
-                                <input type="radio" name="scale-28" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-28" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-28" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-28" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -711,9 +694,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Hizmet kalitesini geliştirmek için fikirler öne sürerim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-29" value="1" required>
-                                <input type="radio" name="scale-29" value="2">
-                                <input type="radio" name="scale-29" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-29" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-29" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-29" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -723,9 +712,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Çeşitli insanlarla yeni fikirler hakkında yapılacak tartışmaları teşvik ederim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-30" value="1" required>
-                                <input type="radio" name="scale-30" value="2">
-                                <input type="radio" name="scale-30" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-30" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-30" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-30" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -735,9 +730,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Değişiklik ihtiyacının, insanlar ile hizmetler üzerindeki etkisini dile getiririm.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-31" value="1" required>
-                                <input type="radio" name="scale-31" value="2">
-                                <input type="radio" name="scale-31" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-31" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-31" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-31" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -747,9 +748,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Değişikliğin sağlanması için kendim odaklanır ve diğerlerini de bu konuda motive ederim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-32" value="1" required>
-                                <input type="radio" name="scale-32" value="2">
-                                <input type="radio" name="scale-32" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-32" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-32" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-32" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -759,9 +766,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Değişim faktörlerini (örn. Siyasi, sosyal, teknik, ekonomik, örgütsel, mesleki çevre) tanımlarım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-33" value="1" required>
-                                <input type="radio" name="scale-33" value="2">
-                                <input type="radio" name="scale-33" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-33" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-33" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-33" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -771,9 +784,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Gelecekte değişim ihtiyacı doğuracak zorlukları tahmin eder, bunları diğerlerine iletirim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-34" value="1" required>
-                                <input type="radio" name="scale-34" value="2">
-                                <input type="radio" name="scale-34" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-34" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-34" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-34" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -783,9 +802,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Hizmetlerin iyileştirilmesi için, veri ve bilgileri kullanırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-35" value="1" required>
-                                <input type="radio" name="scale-35" value="2">
-                                <input type="radio" name="scale-35" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-35" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-35" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-35" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -795,9 +820,15 @@
                             <div class="scale-item">
                             <div class="scale-question">En iyi uygulamaya ulaşmak için bilgi ve kanıtların kullanılması yönünde diğerlerini de etkilerim.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-36" value="1" required>
-                                <input type="radio" name="scale-36" value="2">
-                                <input type="radio" name="scale-36" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-36" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-36" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-36" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -807,9 +838,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Karar verirken; hizmet değerlerini ve önceliklerini dikkate alır, anahtar kişi ve gruplara danışırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-37" value="1" required>
-                                <input type="radio" name="scale-37" value="2">
-                                <input type="radio" name="scale-37" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-37" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-37" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-37" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -819,9 +856,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Hizmetlerin geleceği ile ilgili olarak resmi ve gayri resmi karar verme süreçlerine aktif olarak katılırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-38" value="1" required>
-                                <input type="radio" name="scale-38" value="2">
-                                <input type="radio" name="scale-38" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-38" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-38" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-38" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -831,9 +874,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Yeni yöntemleri uygulamaya koymak adına, sorumluluk alırım.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-39" value="1" required>
-                                <input type="radio" name="scale-39" value="2">
-                                <input type="radio" name="scale-39" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-39" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-39" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-39" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -843,9 +892,15 @@
                             <div class="scale-item">
                             <div class="scale-question">Değişimlerin, hastalar ve hizmet sunumu üzerindeki etkisini değerlendiririm.</div>
                             <div class="scale-options">
-                                <input type="radio" name="scale-40" value="1" required>
-                                <input type="radio" name="scale-40" value="2">
-                                <input type="radio" name="scale-40" value="3">
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-40" value="1" required>
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-40" value="2">
+                                </label>
+                                <label class="scale-option-label">
+                                    <input type="radio" name="scale-40" value="3">
+                                </label>
                             </div>
                             </div>
                         </div>
@@ -1152,252 +1207,6 @@
 </form>
 </div>
 
-<script>
-function toggleConditionalInput(fieldName) {
-    const conditionalDiv = document.getElementById(fieldName + '-conditional');
-    if (conditionalDiv) {
-        const yesOption = document.getElementById(fieldName + '-yes');
-        if (yesOption && yesOption.checked) {
-            conditionalDiv.style.display = 'block';
-            
-            // Make the explanation textareas required when "Evet" is selected
-            const textArea = conditionalDiv.querySelector('textarea');
-            if (textArea) {
-                textArea.setAttribute('required', 'required');
-            }
-        } else {
-            conditionalDiv.style.display = 'none';
-            
-            // Remove required attribute when "Hayır" is selected
-            const textArea = conditionalDiv.querySelector('textarea');
-            if (textArea) {
-                textArea.removeAttribute('required');
-            }
-        }
-    }
-}
-
-// Function to navigate between pages
-function goToPage(pageId) {
-    const currentPage = document.querySelector('.form-page.active');
-    const nextPage = document.getElementById(pageId);
-    
-    if (currentPage && nextPage) {
-        currentPage.classList.remove('active');
-        nextPage.classList.add('active');
-        window.scrollTo(0, 0);
-    }
-}
-
-// Function to validate a form page
-function validatePage(pageId) {
-    const page = document.getElementById(pageId);
-    if (!page) return true; // If page doesn't exist, consider it valid
-    
-    const requiredInputs = page.querySelectorAll('input[required], textarea[required]');
-    let isValid = true;
-    
-    requiredInputs.forEach(input => {
-        const errorMsgId = input.name + '-error';
-        const errorMsg = document.getElementById(errorMsgId);
-        
-        // Check if radio group is selected
-        if (input.type === 'radio') {
-            const radioGroup = document.getElementsByName(input.name);
-            let radioSelected = false;
-            
-            for (let radio of radioGroup) {
-                if (radio.checked) {
-                    radioSelected = true;
-                    break;
-                }
-            }
-            
-            if (!radioSelected) {
-                isValid = false;
-                if (errorMsg) errorMsg.style.display = 'block';
-            } else {
-                if (errorMsg) errorMsg.style.display = 'none';
-            }
-        } 
-        // Check if text input or textarea is filled
-        else if ((input.type === 'text' || input.tagName === 'TEXTAREA') && !input.value.trim()) {
-            isValid = false;
-            if (errorMsg) errorMsg.style.display = 'block';
-        } else {
-            if (errorMsg) errorMsg.style.display = 'none';
-        }
-    });
-    
-    // Special validation for Likert scale on page 3
-    if (pageId === 'page3') {
-        const scaleItems = page.querySelectorAll('.scale-item:not(.scale-header)');
-        let scaleValid = true;
-        
-        scaleItems.forEach(item => {
-            const radioInputs = item.querySelectorAll('input[type="radio"]');
-            const radioName = radioInputs.length > 0 ? radioInputs[0].name : null;
-            
-            if (radioName) {
-                const radioGroup = document.getElementsByName(radioName);
-                let radioSelected = false;
-                
-                for (let radio of radioGroup) {
-                    if (radio.checked) {
-                        radioSelected = true;
-                        break;
-                    }
-                }
-                
-                if (!radioSelected) {
-                    scaleValid = false;
-                }
-            }
-        });
-        
-        const scaleError = document.getElementById('scale-error');
-        if (!scaleValid) {
-            isValid = false;
-            if (scaleError) scaleError.style.display = 'block';
-        } else {
-            if (scaleError) scaleError.style.display = 'none';
-        }
-    }
-    
-    return isValid;
-}
-
-// Define the conditional fields (was missing)
-const conditionalFields = [
-    'repeat',
-    'personal-dev',
-    'volunteer',
-    'positive-role',
-    'negative-role',
-    'positive-comm',
-    'negative-comm',
-    'future-plan',
-    'manager'
-];
-
-// Set up deselectable radio buttons
-function setupDeselectableRadios() {
-    // For year repeat radios
-    const yearRepeatOptions = document.querySelectorAll('input[name="year-repeat"]');
-    yearRepeatOptions.forEach(radio => {
-        radio.addEventListener('click', function() {
-            if (this.getAttribute('data-checked') === 'true') {
-                this.checked = false;
-                this.setAttribute('data-checked', 'false');
-            } else {
-                // Clear data-checked attribute from all options in the group
-                yearRepeatOptions.forEach(r => r.setAttribute('data-checked', 'false'));
-                this.setAttribute('data-checked', 'true');
-            }
-        });
-    });
-    
-    const internshipRepeatOptions = document.querySelectorAll('input[name="internship-repeat"]');
-    internshipRepeatOptions.forEach(radio => {
-        radio.addEventListener('click', function() {
-            if (this.getAttribute('data-checked') === 'true') {
-                this.checked = false;
-                this.setAttribute('data-checked', 'false');
-            } else {
-                // Clear data-checked attribute from all options in the group
-                internshipRepeatOptions.forEach(r => r.setAttribute('data-checked', 'false'));
-                this.setAttribute('data-checked', 'true');
-            }
-        });
-    });
-}
-
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // Set up deselectable radio buttons
-    setupDeselectableRadios();
-
-    // Set up page navigation
-    document.getElementById('page1Next').addEventListener('click', function() {
-        if (validatePage('page1')) {
-            const consentNo = document.getElementById('consent-no');
-            if (consentNo && consentNo.checked) {
-                alert('Ankete devam etmek için katılım onayı vermeniz gerekmektedir.');
-                return;
-            }
-            goToPage('page2');
-        }
-    });
-    
-    document.getElementById('page2Next').addEventListener('click', function() {
-        if (validatePage('page2')) {
-            goToPage('page3');
-        }
-    });
-    
-    document.getElementById('page3Next').addEventListener('click', function() {
-        if (validatePage('page3')) {
-            goToPage('page4');
-        }
-    });
-    
-    document.getElementById('page4Next').addEventListener('click', function() {
-        if (validatePage('page4')) {
-            goToPage('page5');
-        }
-    });
-    
-    document.getElementById('page5Next').addEventListener('click', function() {
-        if (validatePage('page5')) {
-            goToPage('page6');
-        }
-    });
-    
-    // Set up radio button change listeners for conditional inputs
-    conditionalFields.forEach(field => {
-        const radioButtons = document.querySelectorAll(`input[name="${field}"]`);
-        radioButtons.forEach(radio => {
-            radio.addEventListener('change', function() {
-                toggleConditionalInput(field);
-            });
-        });
-    });
-
-    document.getElementById('surveyForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    if (!validatePage('page6')) {
-        alert("Lütfen tüm gerekli alanları doldurunuz.");
-        return;
-    }
-    
-    // Show loading indicator or message
-    const submitButton = document.getElementById('submitButton');
-    submitButton.textContent = "Gönderiliyor...";
-    submitButton.disabled = true;
-    
-    // Create a hidden iframe
-    let iframe = document.createElement('iframe');
-    iframe.name = 'submit-iframe';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    
-    // Set form target to iframe
-    this.target = 'submit-iframe';
-    this.action = "https://script.google.com/macros/s/AKfycbxj3Z88aJpJSUNkMiMNpWRF68cwqqvi_r2ralHTOc0JpVOOQlB7D_TEDmJHM4D4PEKyEA/exec"; 
-    
-    // Add method attribute
-    this.method = 'post';
-    
-    // Submit the form
-    this.submit();
-    
-    // Show thank you page after a short delay
-    setTimeout(function() {
-        goToPage('thank-you-page');
-    }, 2000);
-});
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
