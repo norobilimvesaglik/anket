@@ -198,6 +198,7 @@ button:hover {
 .scale-header .scale-question {
     flex: 3;
     text-align: center;
+    align-content: center;
     padding-right: 20px;
 }
 
