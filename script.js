@@ -4,6 +4,19 @@ function toggleConditionalInput(fieldName) {
         const yesOption = document.getElementById(fieldName + '-yes');
         const otherOption = document.getElementById('plan-other');
         
+        // Özel kontrol: Eğer yöneticilik sorusu ise ve "Hayır" seçilmişse, koşullu alanı gizle
+        if (fieldName === 'manager') {
+            const noOption = document.getElementById('manager-no');
+            if (noOption && noOption.checked) {
+                conditionalDiv.style.display = 'none';
+                const textArea = conditionalDiv.querySelector('textarea');
+                if (textArea) {
+                    textArea.removeAttribute('required');
+                }
+                return;
+            }
+        }
+        
         if ((yesOption && yesOption.checked) || (otherOption && otherOption.checked)) {
             conditionalDiv.style.display = 'block';
             
@@ -497,4 +510,3 @@ window.addEventListener('click', (event) => {
         hideModal();
     }
 });
-
